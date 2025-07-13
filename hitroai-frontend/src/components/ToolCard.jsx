@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 
 const ToolCard = ({ title, description, icon: Icon, href, gradient, index = 0 }) => {
   return (

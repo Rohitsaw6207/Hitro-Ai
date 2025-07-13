@@ -181,6 +181,30 @@ body.dark {
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
+/* Lazy Loading Animation */
+.lazy-load {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Intersection Observer Animation */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Enhanced Chat Styles */
 .prose code {
   @apply bg-secondary-100 dark:bg-secondary-700 px-1.5 py-0.5 rounded text-sm;

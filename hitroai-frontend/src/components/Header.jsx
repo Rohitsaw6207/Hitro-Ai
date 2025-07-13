@@ -8,7 +8,7 @@ const Header = ({ onToggleSidebar, onToggleTheme, darkMode, isAuthenticated, sid
   const getPageTitle = () => {
     switch (location.pathname) {
       case '/': return 'Hitro AI';
-      case '/dashboard': return 'Dashboard';
+      case '/dashboard': return 'AI Tools';
       case '/login': return 'Login';
       case '/signup': return 'Sign Up';
       case '/profile': return 'Profile';
