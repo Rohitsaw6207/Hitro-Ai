@@ -1,4 +1,4 @@
-import { Check, Star, Zap, Crown, Sparkles, TrendingUp, Shield, Headphones } from 'lucide-react';
+import { Check, Star, Zap, Crown, Sparkles, TrendingUp, Shield, Headphones, Clock, Database } from 'lucide-react';
 import { useState } from 'react';
 
 const Subscription = () => {
@@ -24,21 +24,22 @@ const Subscription = () => {
       bgGradient: 'from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900'
     },
     {
-      name: 'Premium',
-      price: isAnnual ? '₹20,000' : '₹2,000',
-      originalPrice: isAnnual ? '₹24,000' : null,
-      period: isAnnual ? 'per year' : 'per month',
+      name: '🔐 Pro Plan',
+      subtitle: '(Prescription Plan)',
+      price: '₹999',
+      originalPrice: null,
+      period: 'per month',
       description: 'For power users and professionals',
       features: [
-        'Unlimited messages',
-        'All AI tools & features',
-        'Priority support (24/7)',
-        'Advanced AI models',
-        'Custom integrations',
-        'API access',
-        'Export conversations',
-        'Team collaboration',
-        'Advanced analytics'
+        '🔓 Unlimited access to all tools',
+        '⚡ Priority response time (faster API handling)',
+        '💾 Save chat/code history',
+        '🎯 Advanced AI models',
+        '🔒 Enhanced security',
+        '📞 Priority support (24/7)',
+        '🚀 Custom integrations',
+        '📊 Advanced analytics',
+        '👥 Team collaboration'
       ],
       recommended: true,
       icon: Crown,
@@ -61,15 +62,15 @@ const Subscription = () => {
       gradient: 'from-green-400 to-emerald-500'
     },
     {
-      icon: Headphones,
-      title: '24/7 Support',
-      description: 'Get help whenever you need it from our expert team',
+      icon: Clock,
+      title: 'Priority Response',
+      description: 'Faster API handling for Pro users with dedicated resources',
       gradient: 'from-blue-400 to-purple-500'
     },
     {
-      icon: TrendingUp,
-      title: 'Advanced Analytics',
-      description: 'Track your productivity and optimize your workflow',
+      icon: Database,
+      title: 'Chat History',
+      description: 'Save and access your conversations and code snippets anytime',
       gradient: 'from-pink-400 to-red-500'
     }
   ];
@@ -101,33 +102,6 @@ const Subscription = () => {
             <br className="hidden md:block" />
             <span className="text-primary-600 font-semibold">Start your journey to unlimited productivity.</span>
           </p>
-
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border border-secondary-200 dark:border-secondary-700 rounded-2xl p-2 shadow-lg">
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                !isAnnual 
-                  ? 'bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg' 
-                  : 'text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-200'
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 relative ${
-                isAnnual 
-                  ? 'bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg' 
-                  : 'text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-200'
-              }`}
-            >
-              Annual
-              <span className="absolute -top-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 text-white text-xs px-2 py-1 rounded-full">
-                Save 17%
-              </span>
-            </button>
-          </div>
         </div>
 
         {/* Pricing Cards */}
@@ -165,6 +139,12 @@ const Subscription = () => {
                   <h3 className="text-3xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
                     {plan.name}
                   </h3>
+                  
+                  {plan.subtitle && (
+                    <p className="text-lg font-medium text-purple-600 dark:text-purple-400 mb-2">
+                      {plan.subtitle}
+                    </p>
+                  )}
                   
                   <p className="text-secondary-600 dark:text-secondary-400 mb-4">
                     {plan.description}
@@ -233,7 +213,7 @@ const Subscription = () => {
         <div className="mb-16 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
           <h2 className="text-4xl font-bold text-center mb-12">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Why Choose Premium?
+              Why Choose Pro Plan?
             </span>
           </h2>
           
@@ -282,6 +262,24 @@ const Subscription = () => {
               </h3>
               <p className="text-secondary-600 dark:text-secondary-400 text-sm">
                 Yes! Start with our free plan and upgrade when you're ready for more features.
+              </p>
+            </div>
+            
+            <div className="p-6 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border border-secondary-200/50 dark:border-secondary-700/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <h3 className="font-bold text-secondary-900 dark:text-secondary-100 mb-2">
+                What's included in chat history?
+              </h3>
+              <p className="text-secondary-600 dark:text-secondary-400 text-sm">
+                Save all your conversations, code snippets, and AI responses for future reference.
+              </p>
+            </div>
+            
+            <div className="p-6 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border border-secondary-200/50 dark:border-secondary-700/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <h3 className="font-bold text-secondary-900 dark:text-secondary-100 mb-2">
+                How fast is priority response?
+              </h3>
+              <p className="text-secondary-600 dark:text-secondary-400 text-sm">
+                Pro users get 3x faster response times with dedicated API resources.
               </p>
             </div>
           </div>
