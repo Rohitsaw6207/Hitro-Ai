@@ -130,17 +130,16 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
         {/* Footer - Fixed at bottom */}
         <div className="p-6 border-t border-gray-200/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl flex-shrink-0">
           <div className="space-y-4">
+            
             {/* Developer Info */}
             <div className="text-center">
               <div className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Developed by
+                Developed by <span className="font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Rohit Kumar</span>
               </div>
-              <div className="text-base font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mb-3">
-                Rohit Kumar
-              </div>
-              
+
               {/* Social Links */}
               <div className="flex justify-center space-x-4 mb-4">
+                {/* Email */}
                 <a 
                   href="mailto:rohitku6207@gmail.com"
                   className="group p-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 rounded-lg transition-all duration-300 hover:scale-110"
@@ -150,7 +149,8 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
                 </a>
-                
+
+                {/* LinkedIn */}
                 <a 
                   href="https://www.linkedin.com/in/rohit-kumar-saw6207/"
                   target="_blank"
@@ -162,7 +162,8 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </a>
-                
+
+                {/* GitHub */}
                 <a 
                   href="https://github.com/Rohitsaw6207"
                   target="_blank"
@@ -176,22 +177,22 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
                 </a>
               </div>
             </div>
-            
-            {/* Copyright */}
-            <div className="text-xs text-gray-500 dark:text-gray-400 text-center space-y-1">
-              <div>© 2025 Online Game Hub. All rights reserved.</div>
-              <div className="flex justify-center space-x-2">
-                <Link 
-                  to="/privacy-policy" 
-                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                  onClick={onClose}
-                >
-                  Privacy Policy
-                </Link>
-              </div>
+
+            {/* Footer Bottom Line */}
+            <div className="text-xs text-gray-500 dark:text-gray-400 text-center">
+              © 2025 <span className="font-semibold text-black dark:text-white">Hitro Ai</span> | 
+              <Link 
+                to="/privacy-policy" 
+                className="font-bold hover:text-primary-600 dark:hover:text-primary-400 ml-1 transition-colors duration-200"
+                onClick={onClose}
+              >
+                Privacy Policy
+              </Link>
             </div>
+
           </div>
         </div>
+
       </div>
     </>
   );
