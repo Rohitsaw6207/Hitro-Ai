@@ -45,7 +45,7 @@ const ChatMessage = ({ message, isUser }) => {
           {/* Message Body */}
           <div className="text-gray-700 dark:text-gray-300 prose prose-xs max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800">
             {isUser ? (
-              <p className="whitespace-pre-wrap text-sm">{message}</p>
+              <p className="whitespace-pre-wrap text-xs">{message}</p>
             ) : (
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -77,31 +77,31 @@ const ChatMessage = ({ message, isUser }) => {
                     );
                   },
                   h1: ({ children }) => (
-                    <h1 className="text-lg font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mb-3">
+                    <h1 className="text-base font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mb-2">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-base font-semibold text-gray-800 dark:text-gray-200 mb-2 mt-4">
+                    <h2 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5 mt-3">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 mt-3">
+                    <h3 className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5 mt-2">
                       {children}
                     </h3>
                   ),
                   ul: ({ children }) => (
-                    <ul className="space-y-0.5 ml-3 text-sm">{children}</ul>
+                    <ul className="space-y-0.5 ml-2 text-xs">{children}</ul>
                   ),
                   li: ({ children }) => (
                     <li className="flex items-start space-x-2">
-                      <span className="w-1 h-1 bg-primary-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                      <span className="w-1 h-1 bg-primary-500 rounded-full mt-1 flex-shrink-0"></span>
                       <span>{children}</span>
                     </li>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-3 border-primary-500 pl-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 rounded-r-lg my-3 text-sm">
+                    <blockquote className="border-l-2 border-primary-500 pl-2 py-1 bg-primary-50 dark:bg-primary-900/20 rounded-r-lg my-2 text-xs">
                       {children}
                     </blockquote>
                   )
@@ -117,17 +117,17 @@ const ChatMessage = ({ message, isUser }) => {
             <div className="flex items-center space-x-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <button
                 onClick={() => handleCopy(message)}
-                className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-all duration-200 hover:scale-105"
+                className="flex items-center space-x-1 px-1.5 py-0.5 text-xs text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-all duration-200 hover:scale-105"
               >
-                <Copy size={10} />
+                <Copy size={8} />
                 <span>{copied ? 'Copied!' : 'Copy'}</span>
               </button>
-              <button className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-md transition-all duration-200 hover:scale-105">
-                <ThumbsUp size={10} />
+              <button className="flex items-center space-x-1 px-1.5 py-0.5 text-xs text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-md transition-all duration-200 hover:scale-105">
+                <ThumbsUp size={8} />
                 <span>Good</span>
               </button>
-              <button className="flex items-center space-x-1 px-2 py-1 text-xs text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-all duration-200 hover:scale-105">
-                <ThumbsDown size={10} />
+              <button className="flex items-center space-x-1 px-1.5 py-0.5 text-xs text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-all duration-200 hover:scale-105">
+                <ThumbsDown size={8} />
                 <span>Bad</span>
               </button>
             </div>

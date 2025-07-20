@@ -15,6 +15,7 @@ import CodeChat from './pages/CodeChat';
 import TranslatorChat from './pages/TranslatorChat';
 import ResumeChat from './pages/ResumeChat';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Admin from './pages/Admin';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -95,6 +96,7 @@ function App() {
                 <Route path="/tools/translator" element={<TranslatorChat />} />
                 <Route path="/tools/resume" element={<ResumeChat />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/admin" element={<Admin />} />
               </Routes>
             </main>
           </div>

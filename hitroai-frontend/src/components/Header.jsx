@@ -81,12 +81,23 @@ const Header = ({ onToggleSidebar, onToggleTheme, darkMode, isAuthenticated, sid
             
             {/* User Actions */}
             {isAuthenticated ? (
-              <Link 
-                to="/profile"
-                className="group p-2 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all duration-300 hover:scale-110 active:scale-95"
-              >
-                <User size={20} className="group-hover:text-primary-600 transition-colors duration-300" />
-              </Link>
+              <div className="flex items-center space-x-2">
+                {/* Profile Avatar */}
+                <Link 
+                  to="/profile"
+                  className="group p-2 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-all duration-300 hover:scale-110 active:scale-95"
+                >
+                  {localStorage.getItem('userGender') ? (
+                    <img 
+                      src={localStorage.getItem('userGender') === 'male' ? '/male-avatar.png' : '/female-avatar.png'}
+                      alt="Profile"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  ) : (
+                    <User size={20} className="group-hover:text-primary-600 transition-colors duration-300" />
+                  )}
+                </Link>
+              </div>
             ) : (
               <Link 
                 to="/login"

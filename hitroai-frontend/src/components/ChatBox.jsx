@@ -32,34 +32,34 @@ const ChatBox = ({ onSendMessage, isLoading }) => {
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Message Hitro AI..."
-              className="w-full px-4 py-4 pr-16 bg-transparent border-none outline-none resize-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 text-base leading-6 max-h-32 min-h-[56px] scrollbar-thin rounded-2xl"
+              className="w-full px-3 py-3 pr-14 bg-transparent border-none outline-none resize-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 text-sm leading-5 max-h-28 min-h-[48px] scrollbar-thin rounded-2xl"
               disabled={isLoading}
               rows={1}
               style={{
                 height: 'auto',
-                minHeight: '56px',
-                maxHeight: '128px'
+                minHeight: '48px',
+                maxHeight: '112px'
               }}
               onInput={(e) => {
                 e.target.style.height = 'auto';
-                e.target.style.height = Math.min(e.target.scrollHeight, 128) + 'px';
+                e.target.style.height = Math.min(e.target.scrollHeight, 112) + 'px';
               }}
             />
             
             {/* Send Button */}
-            <div className="absolute right-2 bottom-2">
+            <div className="absolute right-1.5 bottom-1.5">
               <button
                 type="submit"
                 disabled={!message.trim() || isLoading}
-                className="group p-3 bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 disabled:from-gray-300 disabled:to-gray-400 text-white rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg hover:shadow-xl"
+                className="group p-2.5 bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 disabled:from-gray-300 disabled:to-gray-400 text-white rounded-xl transition-all duration-300 hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg hover:shadow-xl"
               >
-                <Send size={18} className={`transition-transform duration-200 ${isLoading ? 'animate-pulse' : 'group-hover:translate-x-0.5'}`} />
+                <Send size={16} className={`transition-transform duration-200 ${isLoading ? 'animate-pulse' : 'group-hover:translate-x-0.5'}`} />
               </button>
             </div>
           </div>
           
           {/* Status & Instructions */}
-          <div className="flex items-center justify-between mt-3 px-2">
+          <div className="flex items-center justify-between mt-2 px-2">
             <div className="text-xs text-gray-500 dark:text-gray-400">
               {isLoading ? (
                 <span className="flex items-center space-x-1">
@@ -69,7 +69,7 @@ const ChatBox = ({ onSendMessage, isLoading }) => {
                   <span className="ml-2">AI is thinking...</span>
                 </span>
               ) : (
-                <span>Press Enter to send, Shift + Enter for new line</span>
+                <span className="text-xs">Press Enter to send</span>
               )}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400">
