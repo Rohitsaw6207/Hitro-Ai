@@ -181,8 +181,8 @@ const Dashboard = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border-t border-secondary-200/50 dark:border-secondary-700/50 py-8 mt-16">
-        <div className="w-full max-w-none px-4">
+      <footer className="w-screen bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border-t border-secondary-200/50 dark:border-secondary-700/50 py-8 mt-16 -mx-4">
+        <div className="w-full px-4">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             {/* Left - Developer */}
             <div className="text-sm text-secondary-600 dark:text-secondary-400">

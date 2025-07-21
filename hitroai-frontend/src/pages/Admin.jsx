@@ -17,7 +17,7 @@ const AdminLogin = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-slate-950 dark:to-gray-900">
+    <div className="fixed inset-0 z-50 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-slate-950 dark:to-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white/90 dark:bg-secondary-800/90 backdrop-blur-xl border border-secondary-200/50 dark:border-secondary-700/50 rounded-3xl shadow-2xl p-8">
           <div className="text-center mb-8">
@@ -123,10 +123,10 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-slate-950 dark:to-gray-900">
-      <div className="flex">
+    <div className="fixed inset-0 z-50 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-slate-950 dark:to-gray-900">
+      <div className="flex h-full">
         {/* Sidebar */}
-        <div className="w-64 bg-white/90 dark:bg-secondary-800/90 backdrop-blur-xl border-r border-secondary-200/50 dark:border-secondary-700/50 min-h-screen">
+        <div className="w-64 bg-white/90 dark:bg-secondary-800/90 backdrop-blur-xl border-r border-secondary-200/50 dark:border-secondary-700/50">
           <div className="p-6">
             <div className="flex items-center space-x-3 mb-8">
               <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-purple-600 rounded-xl flex items-center justify-center">
@@ -174,7 +174,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-8">
+        <div className="flex-1 p-8 overflow-y-auto">
           <div className="max-w-6xl mx-auto">
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">

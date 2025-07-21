@@ -38,8 +38,16 @@ const Profile = () => {
       <div className="max-w-4xl mx-auto">
         <div className="card p-8 mb-8 animate-fade-in">
           <div className="flex items-center space-x-6 mb-6">
-            <div className="w-24 h-24 bg-primary-600 rounded-full flex items-center justify-center">
-              <User size={48} className="text-white" />
+            <div className="w-24 h-24 bg-primary-600 rounded-full flex items-center justify-center overflow-hidden">
+              {localStorage.getItem('userGender') ? (
+                <img 
+                  src={localStorage.getItem('userGender') === 'male' ? '/male-avatar.png' : '/female-avatar.png'}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <User size={48} className="text-white" />
+              )}
             </div>
             <div>
               <h1 className="text-3xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
@@ -152,8 +160,8 @@ const Profile = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border-t border-secondary-200/50 dark:border-secondary-700/50 py-8 mt-16">
-        <div className="w-full max-w-none px-4">
+      <footer className="w-screen bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border-t border-secondary-200/50 dark:border-secondary-700/50 py-8 mt-16 -mx-4">
+        <div className="w-full px-4">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             {/* Left - Developer */}
             <div className="text-sm text-secondary-600 dark:text-secondary-400">

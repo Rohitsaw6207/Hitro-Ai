@@ -25,22 +25,22 @@ const Subscription = () => {
       bgGradient: 'from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900'
     },
     {
-      name: '🔐 Pro Plan',
-      subtitle: '(Prescription Plan)',
-      price: '₹99',
+      name: 'Pro Plan',
+      subtitle: 'Most Popular',
+      price: '₹199',
       originalPrice: null,
       period: 'per month',
       description: 'For power users and professionals',
       features: [
-        '🔓 Unlimited access to all tools',
-        '⚡ Priority response time (faster API handling)',
-        '💾 Save chat/code history',
-        '🎯 Advanced AI models',
-        '🔒 Enhanced security',
-        '📞 Priority support (24/7)',
-        '🚀 Custom integrations',
-        '📊 Advanced analytics',
-        '👥 Team collaboration'
+        'Unlimited access to all tools',
+        'Priority response time',
+        'Save chat/code history',
+        'Advanced AI models',
+        'Enhanced security',
+        'Priority support (24/7)',
+        'Custom integrations',
+        'Advanced analytics',
+        'Team collaboration'
       ],
       recommended: true,
       icon: Crown,
@@ -106,12 +106,12 @@ const Subscription = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="flex justify-center mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-3xl w-full">
+        <div className="flex justify-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl w-full">
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`group relative p-4 rounded-xl shadow-lg transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-fade-in-up overflow-hidden ${
+              className={`group relative p-8 rounded-2xl shadow-lg transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-fade-in-up overflow-hidden ${
                 plan.recommended 
                   ? 'ring-2 ring-purple-500/50 bg-white/90 dark:bg-secondary-800/90' 
                   : 'bg-white/80 dark:bg-secondary-800/80'
@@ -133,49 +133,49 @@ const Subscription = () => {
               
               <div className="relative z-10">
                 {/* Plan Header */}
-                <div className="text-center mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${plan.gradient} rounded-xl flex items-center justify-center mx-auto mb-2 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
-                    <plan.icon size={24} className="text-white" />
+                <div className="text-center mb-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${plan.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                    <plan.icon size={32} className="text-white" />
                   </div>
                   
-                  <h3 className="text-lg font-bold text-secondary-900 dark:text-secondary-100 mb-1">
+                  <h3 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
                     {plan.name}
                   </h3>
                   
                   {plan.subtitle && (
-                    <p className="text-xs font-medium text-purple-600 dark:text-purple-400 mb-1">
+                    <p className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-2">
                       {plan.subtitle}
                     </p>
                   )}
                   
-                  <p className="text-xs text-secondary-600 dark:text-secondary-400 mb-2">
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mb-4">
                     {plan.description}
                   </p>
                   
-                  <div className="mb-0.5">
+                  <div className="mb-2">
                     {plan.originalPrice && (
-                      <span className="text-sm text-secondary-500 line-through mr-1">
+                      <span className="text-lg text-secondary-500 line-through mr-2">
                         {plan.originalPrice}
                       </span>
                     )}
-                    <span className={`text-2xl font-bold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
+                    <span className={`text-4xl font-bold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
                       {plan.price}
                     </span>
                   </div>
                   
-                  <div className="text-xs text-secondary-600 dark:text-secondary-400">
+                  <div className="text-sm text-secondary-600 dark:text-secondary-400">
                     {plan.period}
                   </div>
                 </div>
 
                 {/* Features */}
-                <div className="space-y-1.5 mb-4">
+                <div className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start space-x-3 group/feature">
                       <div className={`w-4 h-4 bg-gradient-to-r ${plan.gradient} rounded-full flex items-center justify-center flex-shrink-0 group-hover/feature:scale-110 transition-transform duration-200`}>
                         <Check size={10} className="text-white" />
                       </div>
-                      <span className="text-xs text-secondary-700 dark:text-secondary-300 group-hover/feature:text-secondary-900 dark:group-hover/feature:text-secondary-100 transition-colors duration-200">
+                      <span className="text-sm text-secondary-700 dark:text-secondary-300 group-hover/feature:text-secondary-900 dark:group-hover/feature:text-secondary-100 transition-colors duration-200">
                         {feature}
                       </span>
                     </div>
@@ -186,7 +186,7 @@ const Subscription = () => {
                 <button
                   onClick={() => handleUpgrade(plan)}
                   disabled={plan.current}
-                  className={`w-full py-2.5 px-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl ${
+                  className={`w-full py-3 px-4 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-xl ${
                     plan.current
                       ? 'bg-secondary-200 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-400 cursor-not-allowed'
                       : plan.recommended
@@ -196,12 +196,12 @@ const Subscription = () => {
                 >
                   {plan.current ? (
                     <span className="flex items-center justify-center space-x-2">
-                      <Check size={14} />
+                      <Check size={18} />
                       <span>Current Plan</span>
                     </span>
                   ) : (
                     <span className="flex items-center justify-center space-x-2">
-                      <Crown size={14} />
+                      <Crown size={18} />
                       <span>Upgrade Now</span>
                     </span>
                   )}
@@ -290,8 +290,8 @@ const Subscription = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border-t border-secondary-200/50 dark:border-secondary-700/50 py-8 mt-16">
-        <div className="w-full max-w-none px-4">
+      <footer className="w-screen bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border-t border-secondary-200/50 dark:border-secondary-700/50 py-8 mt-16 -mx-4">
+        <div className="w-full px-4">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             {/* Left - Developer */}
             <div className="text-sm text-secondary-600 dark:text-secondary-400">
