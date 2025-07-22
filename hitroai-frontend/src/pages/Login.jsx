@@ -17,15 +17,39 @@ const Login = ({ setIsAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      console.log("Login API Raw Response:", data);
+
+      if (!response.ok || !data.user) {
+        throw new Error(data?.message || 'Login failed');
+      }
+
+      const { name, email: userEmail, gender } = data.user;
+
+      // Save to localStorage
       localStorage.setItem('isAuthenticated', 'true');
-      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userEmail', userEmail || '');
+      localStorage.setItem('userName', name || '');
+      localStorage.setItem('userGender', gender || '');
+
       setIsAuthenticated(true);
-      setIsLoading(false);
       navigate('/dashboard');
-    }, 1000);
+    } catch (error) {
+      alert(error.message || 'Login failed. Please try again.');
+      console.error("Login Error:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

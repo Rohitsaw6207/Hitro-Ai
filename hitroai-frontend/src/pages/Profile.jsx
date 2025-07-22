@@ -7,11 +7,19 @@ const Profile = () => {
   const [user, setUser] = useState({
     name: '',
     email: '',
+    gender: '',
     plan: 'Free',
     joinDate: '2024-01-15',
   });
 
   const navigate = useNavigate();
+
+  // Optional: Mask part of email (example: ro***@gmail.com)
+  const maskEmail = (email) => {
+    const [user, domain] = email.split('@');
+    const maskedUser = user.slice(0, 2) + '***';
+    return `${maskedUser}@${domain}`;
+  };
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
@@ -22,7 +30,14 @@ const Profile = () => {
 
     const name = localStorage.getItem('userName') || 'User';
     const email = localStorage.getItem('userEmail') || 'user@example.com';
-    setUser(prev => ({ ...prev, name, email }));
+    const gender = localStorage.getItem('userGender')?.toLowerCase() || 'male';
+
+    setUser(prev => ({
+      ...prev,
+      name,
+      email,
+      gender
+    }));
   }, [navigate]);
 
   const handleLogout = () => {
@@ -30,6 +45,10 @@ const Profile = () => {
     navigate('/');
     window.location.reload();
   };
+
+  // If needed elsewhere in JSX:
+  // const displayEmail = maskEmail(user.email);
+
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-secondary-50 dark:bg-secondary-950">
