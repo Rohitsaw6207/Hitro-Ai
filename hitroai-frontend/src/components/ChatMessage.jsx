@@ -45,7 +45,7 @@ const ChatMessage = ({ message, isUser }) => {
           {/* Message Body */}
           <div className="text-gray-700 dark:text-gray-300 prose prose-xs max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800">
             {isUser ? (
-              <p className="whitespace-pre-wrap text-xs">{message}</p>
+              <p className="whitespace-pre-wrap text-[11px]">{message}</p>
             ) : (
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -58,7 +58,7 @@ const ChatMessage = ({ message, isUser }) => {
                           style={tomorrow}
                           language={match[1]}
                           PreTag="div"
-                          className="rounded-lg !bg-gray-900 dark:!bg-gray-800 text-xs"
+                          className="rounded-lg !bg-gray-900 dark:!bg-gray-800 text-[11px]"
                           {...props}
                         >
                           {String(children).replace(/\n$/, '')}
@@ -71,7 +71,7 @@ const ChatMessage = ({ message, isUser }) => {
                         </button>
                       </div>
                     ) : (
-                      <code className={`${className} bg-gray-100 dark:bg-gray-700 px-1 py-0.5 rounded text-xs`} {...props}>
+                      <code className={`${className} bg-gray-100 dark:bg-gray-700 px-1 py-0.5 rounded text-[11px]`} {...props}>
                         {children}
                       </code>
                     );
@@ -92,7 +92,7 @@ const ChatMessage = ({ message, isUser }) => {
                     </h3>
                   ),
                   ul: ({ children }) => (
-                    <ul className="space-y-0.5 ml-2 text-xs">{children}</ul>
+                    <ul className="space-y-0.5 ml-2 text-[11px]">{children}</ul>
                   ),
                   li: ({ children }) => (
                     <li className="flex items-start space-x-2">
@@ -101,7 +101,7 @@ const ChatMessage = ({ message, isUser }) => {
                     </li>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-2 border-primary-500 pl-2 py-1 bg-primary-50 dark:bg-primary-900/20 rounded-r-lg my-2 text-xs">
+                    <blockquote className="border-l-2 border-primary-500 pl-2 py-1 bg-primary-50 dark:bg-primary-900/20 rounded-r-lg my-2 text-[11px]">
                       {children}
                     </blockquote>
                   )

@@ -13,9 +13,9 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
   ];
 
   const tools = [
+    { name: 'Code Assistant', href: '/tools/code', icon: Code },
     { name: 'Blog Generator', href: '/tools/blog', icon: PenTool },
     { name: 'Student Assistant', href: '/tools/student', icon: GraduationCap },
-    { name: 'Code Assistant', href: '/tools/code', icon: Code },
     { name: 'Translator', href: '/tools/translator', icon: Languages },
     { name: 'Resume Assistant', href: '/tools/resume', icon: FileText },
   ];
