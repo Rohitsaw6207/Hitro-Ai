@@ -31,13 +31,6 @@ const Dashboard = () => {
       gradient: 'bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500'
     },
     {
-      title: 'Code Assistant',
-      description: 'Debug, optimize, and write better code with AI guidance. Support for all programming languages.',
-      icon: Code,
-      href: '/tools/code',
-      gradient: 'bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500'
-    },
-    {
       title: 'Translator',
       description: 'Translate text between multiple languages instantly with context-aware AI translation.',
       icon: Languages,
@@ -50,6 +43,13 @@ const Dashboard = () => {
       icon: FileText,
       href: '/tools/resume',
       gradient: 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'
+    },
+        {
+      title: 'Code Assistant',
+      description: 'Debug, optimize, and write better code with AI guidance. Support for all programming languages.',
+      icon: Code,
+      href: '/tools/code',
+      gradient: 'bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500'
     }
   ];
 
@@ -77,82 +77,35 @@ const Dashboard = () => {
       </div>
 
       {/* Tools Grid - Centered */}
-      <div className="flex justify-center mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-          {tools.map((tool, index) => (
-            <ToolCard
-              key={index}
-              title={tool.title}
-              description={tool.description}
-              icon={tool.icon}
-              href={tool.href}
-              gradient={tool.gradient}
-              index={index}
-            />
-          ))}
-        </div>
-      </div>
+{/* Tools Grid - 2 Columns with Centered Last Item if Odd */}
+<div className="flex flex-col items-center gap-8 mb-16">
+  {Array.from({ length: Math.ceil(tools.length / 2) }).map((_, rowIndex) => {
+    const start = rowIndex * 2;
+    const rowItems = tools.slice(start, start + 2);
 
-      {/* Stats Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '800ms' }}>
-        <div className="group relative p-8 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border border-secondary-200/50 dark:border-secondary-700/50 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-          {/* Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          <div className="relative z-10 text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-              <TrendingUp size={32} className="text-white" />
-            </div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-              150
-            </div>
-            <div className="text-secondary-600 dark:text-secondary-400 font-medium mb-3">Messages Used</div>
-            <div className="w-full bg-secondary-200 dark:bg-secondary-700 rounded-full h-3 overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-1000 animate-pulse" style={{ width: '15%' }} />
-            </div>
-            <div className="text-sm text-secondary-500 dark:text-secondary-400 mt-2">15% of monthly limit</div>
-          </div>
-        </div>
-        
-        <div className="group relative p-8 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border border-secondary-200/50 dark:border-secondary-700/50 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-          {/* Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          <div className="relative z-10 text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-              <Zap size={32} className="text-white" />
-            </div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent mb-2">
-              5
-            </div>
-            <div className="text-secondary-600 dark:text-secondary-400 font-medium mb-3">Active Tools</div>
-            <div className="flex justify-center space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: `${i * 200}ms` }} />
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <div className="group relative p-8 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-xl border border-secondary-200/50 dark:border-secondary-700/50 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
-          {/* Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          <div className="relative z-10 text-center">
-            <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-              <Users size={32} className="text-white" />
-            </div>
-            <div className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent mb-2">
-              Free
-            </div>
-            <div className="text-secondary-600 dark:text-secondary-400 font-medium mb-3">Current Plan</div>
-            <div className="inline-flex items-center bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 text-orange-800 dark:text-orange-300 px-4 py-2 rounded-full text-sm font-medium">
-              <Sparkles size={14} className="mr-1 animate-pulse" />
-              Upgrade Available
-            </div>
-          </div>
-        </div>
+    return (
+      <div
+        key={rowIndex}
+        className={`flex gap-8 w-full max-w-4xl ${
+          rowItems.length === 1 ? 'justify-center' : 'justify-between'
+        }`}
+      >
+        {rowItems.map((tool, index) => (
+          <ToolCard
+            key={index}
+            title={tool.title}
+            description={tool.description}
+            icon={tool.icon}
+            href={tool.href}
+            gradient={tool.gradient}
+            index={index}
+          />
+        ))}
       </div>
+    );
+  })}
+</div>
+
 
       {/* Quick Actions */}
       <div className="text-center animate-fade-in-up" style={{ animationDelay: '1000ms' }}>
