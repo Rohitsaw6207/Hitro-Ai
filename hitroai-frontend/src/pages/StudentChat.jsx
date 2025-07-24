@@ -17,14 +17,13 @@ const StudentChat = () => {
       return;
     }
 
-    // Initial welcome message
     setMessages([
       {
         id: 1,
-        text: "Hello! I'm your Student Assistant. I can help you with homework, research, study guides, essay writing, and academic questions. What subject are you working on today?",
+        text: "👋 Hello! I'm your Student Assistant. I can help you with homework, research, study guides, essays, and academic questions.\n\n**Example Inputs:**\n- Explain photosynthesis\n- Help me write a history essay\n- Provide a math study guide",
         isUser: false,
-        timestamp: new Date()
-      }
+        timestamp: new Date(),
+      },
     ]);
   }, [navigate]);
 
@@ -36,104 +35,58 @@ const StudentChat = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleSendMessage = async (message) => {
-    const newMessage = {
-      id: Date.now(),
-      text: message,
-      isUser: true,
-      timestamp: new Date()
+const handleSendMessage = async (message) => {
+  const userMessage = {
+    id: Date.now(),
+    text: message,
+    isUser: true,
+    timestamp: new Date(),
+  };
+
+  setMessages((prev) => [...prev, userMessage]);
+  setIsLoading(true);
+
+  try {
+    const res = await fetch('http://localhost:8000/api/student-assistant', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+
+    const data = await res.json();
+
+    const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    const aiMessage = {
+      id: Date.now() + 1,
+      text: aiResponse || '⚠️ Student Assistant did not return a response.',
+      isUser: false,
+      timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, newMessage]);
-    setIsLoading(true);
-
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponse = {
+    setMessages((prev) => [...prev, aiMessage]);
+  } catch (error) {
+    console.error('Error from Student Assistant:', error);
+    setMessages((prev) => [
+      ...prev,
+      {
         id: Date.now() + 1,
-        text: generateStudentResponse(message),
+        text: '🚫 Could not connect to Student Assistant. Please try again later.',
         isUser: false,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, aiResponse]);
-      setIsLoading(false);
-    }, 1000);
-  };
+        timestamp: new Date(),
+      },
+    ]);
+  }
 
-  const generateStudentResponse = (userMessage) => {
-    const responses = [
-      `# Study Guide: ${userMessage}
-
-## Key Concepts to Remember:
-1. **Main definitions** - Start with basic terminology
-2. **Important formulas** - Write them down and practice
-3. **Examples** - Work through sample problems
-4. **Practice questions** - Test your understanding
-
-## Study Tips:
-- Create flashcards for key terms
-- Form study groups with classmates
-- Use spaced repetition for better retention
-- Teach the concept to someone else
-
-**Would you like me to create specific practice questions for you?**`,
-      
-      `# Research Help: ${userMessage}
-
-## Research Strategy:
-1. **Define your research question** clearly
-2. **Identify reliable sources**:
-   - Academic journals
-   - Books by experts
-   - Government websites
-   - Educational institutions
-
-3. **Take organized notes**:
-   - Use citation format from the start
-   - Summarize key points
-   - Note page numbers for quotes
-
-## Next Steps:
-- Create an outline before writing
-- Use proper citation format (APA, MLA, Chicago)
-- Start with a strong thesis statement
-
-**What specific aspect would you like help with?**`,
-      
-      `# Essay Structure for ${userMessage}
-
-## Introduction (1 paragraph)
-- **Hook**: Start with an interesting fact or question
-- **Context**: Provide background information
-- **Thesis**: Clear statement of your main argument
-
-## Body Paragraphs (3-5 paragraphs)
-- **Topic sentence**: Main point of the paragraph
-- **Evidence**: Facts, quotes, examples
-- **Analysis**: Explain how evidence supports your thesis
-- **Transition**: Connect to next paragraph
-
-## Conclusion (1 paragraph)
-- **Restate thesis** (in different words)
-- **Summarize main points**
-- **Call to action** or final thought
-
-**Would you like me to help you develop any of these sections?**`
-    ];
-
-    return responses[Math.floor(Math.random() * responses.length)];
-  };
+  setIsLoading(false);
+};
 
   return (
     <div className="h-full flex flex-col">
       <div className="flex-1 overflow-y-auto scrollbar-thin">
         <div className="max-w-4xl mx-auto">
-          {messages.map((message) => (
-            <ChatMessage
-              key={message.id}
-              message={message.text}
-              isUser={message.isUser}
-            />
+          {messages.map((msg) => (
+            <ChatMessage key={msg.id} message={msg.text} isUser={msg.isUser} />
           ))}
           {isLoading && <LoadingSpinner />}
           <div ref={messagesEndRef} />
